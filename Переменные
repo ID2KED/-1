@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int age;
+            short coins;
+            byte doll;
+
+            float pizza;
+            double result;
+
+            string surname;
+            string nameOfTheBook;
+
+            char money;
+
+            bool areYouTeen;
+            bool EnoughMoney;
+        }
+
+    }
+}
+ 
