@@ -13,17 +13,17 @@ namespace CSlight
             int age;
             short coins;
             byte doll;
+            sbyte airTemperature;
+            ushort pathLength;
 
             float pizza;
             double result;
 
             string surname;
-            string nameOfTheBook;
-
+            
             char money;
 
             bool areYouTeen;
-            bool EnoughMoney;
         }
 
     }
