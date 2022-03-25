@@ -10,25 +10,20 @@ namespace CSlight
     {
         static void Main(string[] args)
         {
-            int age;
-            string name;
-            string zodiacSigns;
-            string placeOfWork;
+            int patients;            
+            int waitingTimeMinutes;
+            int waitingTimeHours;
+            int timeOnePatient = 10;
+            int minutesInHour = 60;
 
-            Console.Write("Введите Ваше имя: ");
-            name = Console.ReadLine();
+            Console.Write("Введите количесвто пациентов в очереди: ");
+            patients = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Введите Ваш знак зодиака: ");
-            zodiacSigns = Console.ReadLine();
+            waitingTimeMinutes = timeOnePatient * patients;
+            waitingTimeHours = waitingTimeMinutes / minutesInHour;
+            waitingTimeMinutes = waitingTimeMinutes % minutesInHour;
 
-            Console.Write("Введите Ваше место работы: ");
-            placeOfWork= Console.ReadLine();
-
-            Console.Write("Введите Ваш возраст: ");
-            age = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Вас зовут " + name + ", Вам " + age + " лет, Ваш знак зодиака - " + zodiacSigns + ", Ваше место работы - " + placeOfWork + '.');
-            
+            Console.WriteLine("Вы должны отстоять в очереди " + waitingTimeHours + " часов " + waitingTimeMinutes + " минут!");
         }
 
     }
