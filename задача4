@@ -11,19 +11,18 @@ namespace CSlight
         static void Main(string[] args)
         {
             int gold;
-            int price;
-            int crystal;
-            int restOfGold;
-
+            int priceOneCrystal;
+            int crystals;
+            
             Console.Write("Введите количество золота: ");
             gold = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите стоимость одного кристалла: ");
-            price = Convert.ToInt32(Console.ReadLine());
+            priceOneCrystal = Convert.ToInt32(Console.ReadLine());
 
-            crystal = gold / price;
-            restOfGold = gold % price;
+            crystals = gold / priceOneCrystal;
+            gold = gold % priceOneCrystal;
 
-            Console.WriteLine("Поздравляю! Вы купили " + crystal + " кристаллов, у Вас осталось " + restOfGold + " золота!");
+            Console.WriteLine("Поздравляю! Вы купили " + crystals + " кристаллов, у Вас осталось " + gold + " золота!");
         }
 
     }
