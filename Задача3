@@ -12,15 +12,15 @@ namespace CSlight
         {
             string name; 
             string surname;
-            string str1;
+            string change;
 
             name = "Kondratenko";
             surname = "Irina";
             Console.WriteLine("Ваше имя " + name + ", Ваша фамилия " + surname);
 
-            str1 = name;
+            change = name;
             name = surname;
-            surname = str1;
+            surname = change;
             Console.WriteLine("Ваше имя " + name + ", Ваша фамилия " + surname);
         }
 
