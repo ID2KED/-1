@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {    
+            int patient;            
+            int waitingTimeMin;
+            int waitingTimeHours;
+            int timeOnePatient = 10;
+
+            Console.Write("Введите количесвто пациентов в очереди: ");
+            patient = Convert.ToInt32(Console.ReadLine());
+
+            waitingTimeMin = timeOnePatient * patient;
+            waitingTimeHours = waitingTimeMin / 60;
+            waitingTimeMin = waitingTimeMin % 60;
+
+            Console.WriteLine("Вы должны отстоять в очереди " + waitingTimeHours + " часов " + waitingTimeMin + " минут!");
+        }
+
+    }
+}
+ 
