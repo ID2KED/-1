@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int allPictures = 52;
+            int inOneRow = 3;
+
+            int allRow = allPictures / inOneRow;
+            int restOfPictures = allPictures % inOneRow;
+
+            Console.WriteLine("Полных рядов: "+allRow);
+            Console.WriteLine("Оставшихся картинок: "+restOfPictures);
+
+        }
+
+    }
+}
+ 
