@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int age;
+            string name;
+            string zodiacSigns;
+            string placeOfWork;
+
+            Console.Write("Введите Ваше имя: ");
+            name = Console.ReadLine();
+
+            Console.Write("Введите Ваш знак зодиака: ");
+            zodiacSigns = Console.ReadLine();
+
+            Console.Write("Введите Ваше место работы: ");
+            placeOfWork= Console.ReadLine();
+
+            Console.Write("Введите Ваш возраст: ");
+            age = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Вас зовут " + name + ", Вам " + age + " лет, Ваш знак зодиака - " + zodiacSigns + ", Ваше место работы - " + placeOfWork + '.');
+            
+        }
+
+    }
+}
+ 
