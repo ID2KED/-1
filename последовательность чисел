@@ -11,8 +11,9 @@ namespace CSlight
         static void Main(string[] args)
         {
             int lastNumber = 100;
+            int step = 7;
 
-            for (int firstNumber = 5; firstNumber < lastNumber; firstNumber += 7)
+            for (int firstNumber = 5; firstNumber < lastNumber; firstNumber += step)
             {
                 Console.WriteLine(firstNumber);
             }
