@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string stopProgramm = "exit";
+            string userInput;
+
+            Console.Write("Введите волшебное слово: ");
+            userInput = Console.ReadLine();
+
+            while (userInput != stopProgramm)
+            {
+                if (userInput == stopProgramm)
+                {
+                    Console.WriteLine("Wow!!!! Ты крут! Поздравляю!");
+                    break;
+                }
+                else
+                {
+                    Console.Write("Введите волшебное слово: ");
+                    userInput = Console.ReadLine();
+                }
+
+            }
+
+        }
+    }
+}
