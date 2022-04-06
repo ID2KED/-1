@@ -14,7 +14,7 @@ namespace CSlight
             Console.Write("Введите количество повторов: ");
             quantity = Convert.ToInt32(Console.ReadLine());
 
-            while (quantity --> 0) 
+            for (int i=0; i < quantity; i++) 
             {
                 Console.WriteLine("У меня получилось!");
             }
