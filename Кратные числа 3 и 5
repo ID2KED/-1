@@ -13,8 +13,8 @@ namespace CSlight
             int number;
             int minimumNumber = 0;
             int maximumNumber = 100;
-            int multipleThree = 3;
-            int multipleFive = 5;
+            int multipleMinimum = 3;
+            int multipleMaximum = 5;
             int total = 0;
 
             Random random = new Random();
@@ -24,16 +24,13 @@ namespace CSlight
 
             for (int lowerNumber = 1; lowerNumber <= number; lowerNumber++)
             {
-                if (lowerNumber % multipleThree == 0 || lowerNumber % multipleFive == 0)
+                if (lowerNumber % multipleMinimum == 0 || lowerNumber % multipleMaximum == 0)
                 {
                     Console.WriteLine("кратное число " + lowerNumber);
                     total += lowerNumber;
                     Console.WriteLine("сумма чисел равна " + total);
                 }
-
             }
-
         }
-
     }
 }
