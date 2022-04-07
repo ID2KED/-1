@@ -11,24 +11,28 @@ namespace CSlight
         static void Main(string[] args)
         {
             int number;
-            int itog=0;
-            
-            Random rand = new Random();
-            number = rand.Next(0, 100);
-           
-            Console.WriteLine("Вот случайное число, от которого мы будем считать: "+number);
+            int minimumNumber = 0;
+            int maximumNumber = 100;
+            int multipleThree = 3;
+            int multipleFive = 5;
+            int total = 0;
 
-            for (int lowerNumber=1; lowerNumber<=number; lowerNumber++) 
+            Random random = new Random();
+            number = random.Next(minimumNumber, maximumNumber);
+
+            Console.WriteLine("Вот случайное число, от которого мы будем считать: " + number);
+
+            for (int lowerNumber = 1; lowerNumber <= number; lowerNumber++)
             {
-                if (lowerNumber % 3 == 0||lowerNumber%5==0)
+                if (lowerNumber % multipleThree == 0 || lowerNumber % multipleFive == 0)
                 {
-                    Console.WriteLine("кратное число " +lowerNumber);
-                    itog += lowerNumber;
-                    Console.WriteLine("сумма чисел равна "+itog);
+                    Console.WriteLine("кратное число " + lowerNumber);
+                    total += lowerNumber;
+                    Console.WriteLine("сумма чисел равна " + total);
                 }
-                
+
             }
-            
+
         }
 
     }
