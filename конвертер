@@ -1,0 +1,170 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            float usdToEur = 0.92f;
+            float usdToByn = 2.8f;
+            float eurToUsd = 1.08f;
+            float eurToByn = 3.05f;
+            float bynToUsd = 0.35f;
+            float bynToEur = 0.32f;
+            float usd;
+            float byn;
+            float eur;
+            float amountMoney;
+            string clientChoice;
+            string exit = "2";
+
+            Console.WriteLine("Это Ваш кошелек");
+            Console.Write("Введите сколько у Вас долларов: ");
+            usd = Convert.ToSingle(Console.ReadLine());
+            Console.Write("Введите сколько у Вас евро: ");
+            eur = Convert.ToSingle(Console.ReadLine());
+            Console.Write("Введите сколько у Вас белорусских рублей: ");
+            byn = Convert.ToSingle(Console.ReadLine());
+
+            while (usd > 0 || eur > 0 || byn > 0)
+            {
+                Console.WriteLine("Мы предлагаем Вам провести следующие денежные операции:");
+                Console.WriteLine("1 - обменять доллары на евро");
+                Console.WriteLine("2 - обменять доллары на белорусские рубли");
+                Console.WriteLine("3 - обменять евро на доллары");
+                Console.WriteLine("4 - обменять евро на белорусские рубли");
+                Console.WriteLine("5 - обменять белорусские рубли на доллары");
+                Console.WriteLine("6 - обменять белорусские рубли на евро");
+                Console.Write("Введите номер операции из предложенных: ");
+                clientChoice = Console.ReadLine();
+
+                switch (clientChoice)
+                {
+                    case "1":
+                        Console.WriteLine("операция #1: обмен долларов на евро");
+                        Console.Write("Введите сумму, которую хотите обменять: ");
+                        amountMoney = Convert.ToSingle(Console.ReadLine());
+                        if (usd >= amountMoney)
+                        {
+                            usd -= amountMoney;
+                            eur += amountMoney / usdToEur;
+                            Console.WriteLine("Ваш остаток: " + usd + " долларов; " + eur + " евро; "+byn+" белорусских рублей.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не мечтайте! У Вас столько нет!");
+                        }
+                        break;
+
+                    case "2":
+                        Console.WriteLine("операция #2: обменять доллары на белорусские рубли");
+                        Console.Write("Введите сумму, которую хотите обменять: ");
+                        amountMoney = Convert.ToSingle(Console.ReadLine());
+                        if (usd >= amountMoney)
+                        {
+                            usd -= amountMoney;
+                            byn += amountMoney / usdToByn;
+                            Console.WriteLine("Ваш остаток: " + usd + " долларов; " + eur + " евро; " + byn + " белорусских рублей.");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не мечтайте! У Вас столько нет!");
+                        }
+                        break;
+
+                    case "3":
+                        Console.WriteLine("операция #3: обменять евро на доллары");
+                        Console.Write("Введите сумму, которую хотите обменять: ");
+                        amountMoney = Convert.ToSingle(Console.ReadLine());
+                        if (eur >= amountMoney)
+                        {
+                            eur -= amountMoney;
+                            usd += amountMoney / eurToUsd;
+                            Console.WriteLine("Ваш остаток: " + usd + " долларов; " + eur + " евро; " + byn + " белорусских рублей.");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не мечтайте! У Вас столько нет!");
+                        }
+                        break;
+
+                    case "4":
+                        Console.WriteLine("операция #4: обменять евро на белорусские рубли");
+                        Console.Write("Введите сумму, которую хотите обменять: ");
+                        amountMoney = Convert.ToSingle(Console.ReadLine());
+                        if (eur >= amountMoney)
+                        {
+                            eur -= amountMoney;
+                            byn += amountMoney / eurToByn;
+                            Console.WriteLine("Ваш остаток: " + usd + " долларов; " + eur + " евро; " + byn + " белорусских рублей.");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не мечтайте! У Вас столько нет!");
+                        }
+                        break;
+
+                    case "5":
+                        Console.WriteLine("операция #5: обменять белорусские рубли на доллары");
+                        Console.Write("Введите сумму, которую хотите обменять: ");
+                        amountMoney = Convert.ToSingle(Console.ReadLine());
+                        if (byn >= amountMoney)
+                        {
+                            byn -= amountMoney;
+                            usd += amountMoney / bynToUsd;
+                            Console.WriteLine("Ваш остаток: " + usd + " долларов; " + eur + " евро; " + byn + " белорусских рублей.");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не мечтайте! У Вас столько нет!");
+                        }
+                        break;
+
+                    case "6":
+                        Console.WriteLine("операция #6: обменять белорусские рубли на евро");
+                        Console.Write("Введите сумму, которую хотите обменять: ");
+                        amountMoney = Convert.ToSingle(Console.ReadLine());
+                        if (byn >= amountMoney)
+                        {
+                            byn -= amountMoney;
+                            eur += amountMoney / bynToEur;
+                            Console.WriteLine("Ваш остаток: " + usd + " долларов; " + eur + " евро; " + byn + " белорусских рублей.");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не мечтайте! У Вас столько нет!");
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("К сожалению такой операции нет!");
+                        break;
+                }
+
+                Console.WriteLine("Желаете продолжить?");
+                Console.WriteLine("1 - Да");
+                Console.WriteLine("2 - Нет");
+                Console.Write("Введите ответ: ");
+                clientChoice = Console.ReadLine();                
+
+                if (clientChoice == exit)
+                {
+                    break;
+                }
+            }
+
+            Console.WriteLine("Приятно было Вас видеть! Приходите еще!");
+            Console.WriteLine("Ваш итоговый остаток: " + usd + " долларов; " + eur + " евро; " + byn + " белорусских рублей!");
+        }
+    }
+}
