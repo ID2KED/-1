@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSlight
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string password = "98765";
+            string userInput;
+            int inputAttempt = 3;
+
+            for(int exitProgram=0; exitProgram<inputAttempt;exitProgram++)
+            {
+                Console.WriteLine("Вы попали в тайное сообщество!\nДля Вас оставлено тайное сообщение");
+                Console.Write("Чтобы его прочесть, введите пароль: ");
+                userInput = Console.ReadLine();
+
+                if (userInput == password)
+                {
+                    Console.WriteLine("Пароль верный! Сообщение для Вас:\n ...Всё золото лежит в сундуке...");
+                    break;
+                }
+              
+                else
+                {
+                    Console.WriteLine("Пароль неверный! У вас осталось " + (inputAttempt-exitProgram-1) + " попыток");                    
+                }
+            }
+        }
+    }
+}
