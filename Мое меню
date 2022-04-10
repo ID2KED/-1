@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string nameHello;
+            int ageReader;
+            int ageAllowed = 18;
+            int rubToUsd = 100;
+            float rub;
+            float usd = 0;
+            float moneyExchange;
+            string userChoice;
+            string exitMenu = "ExitMenu";
+
+            Console.WriteLine("Добро подаловать в меню моих возможностей!");
+            Console.WriteLine("Введите Да - если хотите посмотреть, что я умею");
+            Console.WriteLine("Введите Нет - если Вам это неинтересно");
+            Console.Write("Сделайте свой выбор: ");
+            userChoice = Console.ReadLine();
+
+            if (userChoice == "да")
+            {
+
+                while (userChoice != exitMenu)
+                {
+                    Console.WriteLine("NameHello - давайте поздороваемся");
+                    Console.WriteLine("AgeReader - прочтите секретное сообщение");
+                    Console.WriteLine("ColorText - поменяйте цвет на синий");
+                    Console.WriteLine("СountMoney - переведем Ваши деньги в доллары");
+                    Console.WriteLine("ExitMenu- Выйти из меню");
+                    Console.Write("Введите свой выбор: ");
+                    userChoice = Console.ReadLine();
+
+                    switch (userChoice)
+                    {
+                        case "NameHello":
+                            Console.Write("Введите Ваше имя:");
+                            nameHello = Console.ReadLine();
+                            Console.WriteLine("Здравствуйте," + nameHello + "!");
+                            break;
+
+                        case "AgeReader":
+                            Console.WriteLine("Сообщение только для 18+!!!");
+                            Console.Write("Введите свой возраст: ");
+                            ageReader = Convert.ToInt32(Console.ReadLine());
+
+                            if (ageReader >= ageAllowed)
+                            {
+                                Console.WriteLine("Пойдем тусить в клуб!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Надо еще подрасти!");
+                            }
+                            break;
+
+                        case "ColorText":
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            break;
+
+                        case "CountMoney":
+                            Console.Write("Введите количество рублей, которое у Вас есть: ");
+                            rub = Convert.ToSingle(Console.ReadLine());
+                            Console.Write("Введите количество рублей, которое хотите поменять: ");
+                            moneyExchange = Convert.ToSingle(Console.ReadLine());
+                            rub -= moneyExchange;
+                            usd += moneyExchange / rubToUsd;
+                            Console.WriteLine("У Вас теперь осталось " + rub + "рублей и " + usd + " долларов.");
+                            break;
+
+                        default:
+                            Console.WriteLine("Увы! Такой команды нет! Читайте внимательнее!!!");
+                            break;
+                    }
+                }
+            }
+
+            else
+            {
+                Console.WriteLine("Всего хорошего!");
+            }
+        }
+    }
+}
