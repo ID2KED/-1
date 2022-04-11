@@ -31,7 +31,7 @@ namespace ConsoleApp2
                     Console.WriteLine("количество: " + countThreeDigitNumber);
                 }
             }
-            Console.WriteLine("У числа " + number + " количество трехзначных натуральных чисел равно: " + countThreeDigitNumber);
+            Console.WriteLine("Количество трехзначных натуральных чисел, которые кратны "+number+ ", равно: " + countThreeDigitNumber);
         }
     }
 }
