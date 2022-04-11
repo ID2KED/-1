@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string name;
+            char symbol;
+            int symbolLongerLenght = 2;
+         
+            Console.Write("Здравствуйте! Введите Ваше имя: ");
+            name = Console.ReadLine();
+            Console.WriteLine("Длина Вашего имени: "+name.Length+ " букв!" );
+            
+            Console.Write("Введите Ваш любимый символ: ");
+            symbol = Convert.ToChar(Console.ReadLine());         
+                      
+            for(int startingPoint = 0; startingPoint < name.Length+ symbolLongerLenght; startingPoint++)
+            {
+                Console.Write(symbol);
+            }
+            Console.WriteLine();
+            Console.WriteLine(symbol + name + symbol);
+
+            for (int startingPoint = 0; startingPoint < name.Length + symbolLongerLenght; startingPoint++)
+            {
+                Console.Write(symbol);
+            }
+            Console.WriteLine();
+        }
+    }
+}
