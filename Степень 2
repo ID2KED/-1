@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int minRandom = 0;
+            int maxRandom = 100;
+            int number;
+            int numberDegree = 2;
+            int countMultiplications = 0;
+            int numberCount = 2; 
+            int subtotal;
+            int numberToDivide;
+            int newNumber=1;
+            int majorDegree = 1;
+
+            number = random.Next(minRandom, maxRandom);
+            Console.WriteLine("Вам выпало число: " + number);
+
+            numberToDivide = number;
+
+            while (numberToDivide != numberDegree)
+            {
+                subtotal = numberToDivide / numberCount;
+                numberToDivide = numberToDivide - subtotal;
+                countMultiplications++;
+            }            
+
+            for (int newMultiplcations = 1; newMultiplcations <= (countMultiplications + majorDegree); newMultiplcations++) 
+            {
+                newNumber *= numberDegree;
+            }
+            
+            Console.WriteLine("минимальная степень двойки, првосходящее число " + number + ", это " + (countMultiplications + majorDegree));
+            Console.WriteLine("В результате, получим число " + newNumber);
+        }
+                       
+    }
+}
