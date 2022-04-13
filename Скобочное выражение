@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string text;
+            char leftSymbol = ')';
+            char rightSymbol = '(';
+            int leftCount = 0;
+            int rightCount = 0;
+            int depth = 0;
+
+            Console.WriteLine("Введите строку символов ( и )");
+            text = Console.ReadLine();
+
+            for (int letter = 0; letter < text.Length; letter++)
+            {
+                Console.WriteLine(text[letter]);
+
+                if (text[letter] == leftSymbol)
+                {
+                    leftCount++;
+                }
+                else if (text[letter] == rightSymbol)
+                {
+                    rightCount++;
+                }
+            }
+            Console.WriteLine(leftCount + " символов ')' и " + rightCount+ " символов '('");
+
+            for (int couple = 0; couple <= leftCount && couple <= rightCount; couple++)
+            {
+                if (leftCount <= rightCount)
+                {
+                    depth = leftCount;
+                }
+
+                else if (rightCount <= leftCount)
+                {
+                    depth = rightCount;
+                }
+            }
+            Console.WriteLine("Максимальная глубина вложенности скобок = " + depth);
+
+            if (leftCount == rightCount) 
+            {
+                Console.WriteLine("Скобочное выражение корректно!");
+            }
+            else if (leftCount != rightCount) 
+            {
+                Console.WriteLine("Скобочное выражение НЕ корректно!");
+            }
+        }
+    }
+}
