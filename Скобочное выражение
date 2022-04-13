@@ -16,47 +16,42 @@ namespace ConsoleApp2
             int leftCount = 0;
             int rightCount = 0;
             int depth = 0;
+            int symbol = 0;
+            int countBrace = 2;
 
             Console.WriteLine("Введите строку символов ( и )");
             text = Console.ReadLine();
 
-            for (int letter = 0; letter < text.Length; letter++)
+            for (int letter = 0; letter < text.Length && symbol >= 0; letter++)
             {
                 Console.WriteLine(text[letter]);
 
-                if (text[letter] == leftSymbol)
-                {
-                    leftCount++;
-                }
-                else if (text[letter] == rightSymbol)
+                if (text[letter] == rightSymbol)
                 {
                     rightCount++;
+                    symbol++;
                 }
-            }
-            Console.WriteLine(leftCount + " символов ')' и " + rightCount+ " символов '('");
-
-            for (int couple = 0; couple <= leftCount && couple <= rightCount; couple++)
-            {
-                if (leftCount <= rightCount)
+                else if (text[letter] == leftSymbol)
                 {
-                    depth = leftCount;
+                    leftCount++;
+                    symbol--;
                 }
+                Console.WriteLine("разница = " + symbol);
+            }
 
-                else if (rightCount <= leftCount)
-                {
-                    depth = rightCount;
-                }
-            }
-            Console.WriteLine("Максимальная глубина вложенности скобок = " + depth);
-
-            if (leftCount == rightCount) 
+            if (symbol != 0)
             {
-                Console.WriteLine("Скобочное выражение корректно!");
+                Console.WriteLine("Некоректное выражение");
             }
-            else if (leftCount != rightCount) 
+            
+            else if (symbol == 0)
             {
-                Console.WriteLine("Скобочное выражение НЕ корректно!");
+                Console.WriteLine("Коректная глубина");
+                Console.WriteLine();
+                depth = (rightCount + leftCount - countBrace) / countBrace;
             }
+           
+            Console.WriteLine("максимальная глубина: " +depth);
         }
     }
 }
