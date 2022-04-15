@@ -1,0 +1,150 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rand = new Random();
+            float healthBoss = rand.Next(500, 1000);
+            float healthWizard = rand.Next(500, 1000);
+            int damageBoss = rand.Next(50, 200);
+            int damageWizard = rand.Next(50, 200);
+            float armorBoss = rand.Next(25, 100);
+            float armorWizard = rand.Next(25, 100);
+            int blackWitch = 100;
+            int shootingStaff = 100;
+            string spell;
+            int tryCountForShootingStaff = 0;
+            int tryBlackWitch = 3;
+            int spiritLightningDamageBoss = rand.Next(10, 100);
+            int spiritLightningDamageWizard = rand.Next(50, 150);
+            int wellOfLife = rand.Next(50, 150);
+
+            
+            Console.WriteLine("Привестсвую! О, Великий Маг!!!\n Твои возможности:\n Количество жизней " + healthWizard + "; \n" +
+                 " Броня " + armorWizard + ";\n Ты способен нанести урон: " + damageWizard);
+            Console.WriteLine();
+            Console.WriteLine("Твой враг - это Босс!!!\n Его возможности:\n Количество жизней " + healthBoss + "; \n" +
+                 " Броня " + armorBoss + ";\n Он способен нанести урон: " + damageBoss);
+            Console.WriteLine();
+            Console.WriteLine("Да будет Великая битва за свет!");
+            Console.WriteLine();
+
+            while (healthBoss > 0 && healthWizard > 0)
+            {
+                Console.WriteLine("Великий Маг! Книга заклинаний открыта!");
+                Console.WriteLine("Прочти одно из них:");
+                Console.WriteLine("Блэквитч - отнимет жизни у босса.");
+                Console.WriteLine("Шутингстаф - увеличит урон.");
+                Console.WriteLine("Спиритлайтнин - вас будт бить молнии.");
+                Console.WriteLine("Вэлофлайф - наполнит тебя жизнью, когда ее будет мало.");
+                Console.WriteLine("Майселф - удар без заклинаний.");
+                Console.WriteLine("Введите Ваш выбор:");
+                spell = Console.ReadLine();
+                Console.WriteLine();
+
+                switch (spell)
+                {
+                    case "Блэквитч":
+                        if (tryBlackWitch > 0)
+                        {
+                            Console.WriteLine("Ты доверился черной Ведьме! Она отнимет у Босса " +blackWitch+ "хп \n Но следующий удар за Боссом!");
+                            tryBlackWitch--;
+                            tryCountForShootingStaff++;
+                            healthBoss = healthBoss - blackWitch;
+                            healthWizard -= Convert.ToSingle(rand.Next(0, damageBoss)) / 100 * armorWizard;
+                            Console.WriteLine("У тебя осталось " + (tryBlackWitch) + " заклинаний Блэквитч");
+                        }
+                        else if (tryBlackWitch <= 0)
+                        {
+                            Console.WriteLine("Это заклинание использовать больше нельзя!");
+                        }
+
+                        Console.WriteLine("У тебя осталось:\n Количество жизней " + healthWizard);
+                        Console.WriteLine("У Босса осталось:\n Количество жизней " + healthBoss);
+                        Console.WriteLine();
+                        break;
+
+                    case "Шутингстаф":
+                        if (tryCountForShootingStaff >= 1)
+                        {
+                            Console.WriteLine("ШутингСтаф - увеличивает урон на 100!\n Но следующим стреляет Босс!!");
+                            healthBoss -= Convert.ToSingle(rand.Next(0, damageWizard + shootingStaff)) / 100 * armorBoss;
+                            healthWizard -= Convert.ToSingle(rand.Next(0, damageBoss)) / 100 * armorWizard;
+                            Console.WriteLine("У тебя осталось:\n Количество жизней " + healthWizard);
+                            Console.WriteLine("У Босса осталось:\n Количество жизней " + healthBoss);
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Cначала прочти заклиание БлэкВитч");
+                        }
+                        break;
+
+                    case "Спиритлайтнин":
+                        Console.WriteLine("СпиритЛайтнин - урон, которые нанесут духи своими молниями!\n К сожалению тебе также от них не скрыться!\n" +
+                            "Но молнии будут более благосклонны к тебе! Надеемся, что ты выживешь! ");
+                        healthBoss -= Convert.ToSingle(rand.Next(0, spiritLightningDamageWizard)) / 100 * armorBoss;
+                        healthWizard -= Convert.ToSingle(rand.Next(0, spiritLightningDamageBoss)) / 100 * armorWizard;
+                        Console.WriteLine("У тебя осталось:\n Количество жизней " + healthWizard);
+                        Console.WriteLine("У Босса осталось:\n Количество жизней " + healthBoss);
+                        Console.WriteLine();
+                        break;
+
+                    case "Вэлофлайф":
+                        Console.WriteLine("Колодец жизни напоит тебя!\n Но помни, друг, что следующий шаг за Боссом!");
+                        if (healthWizard <= 200)
+                        {
+                            healthWizard = healthWizard + wellOfLife;
+                            healthWizard -= Convert.ToSingle(rand.Next(0, damageBoss)) / 100 * armorWizard;
+                            Console.WriteLine("Используй правильно свои жизни, Друг наш!");
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("Еще не время наполнять тебя жизнью! Остерегайся Босса!!");
+                            healthWizard -= Convert.ToSingle(rand.Next(0, damageBoss)) / 100 * armorWizard;
+                        }
+                        Console.WriteLine("У тебя осталось:\n Количество жизней " + healthWizard);
+                        Console.WriteLine("У Босса осталось:\n Количество жизней " + healthBoss);
+                        Console.WriteLine();
+                        break;
+
+                    case "Майселф":
+                        Console.WriteLine("О! великий Маг! Мы верим в твою победу!");
+                        healthBoss -= Convert.ToSingle(rand.Next(0, damageWizard)) / 100 * armorBoss;
+                        healthWizard -= Convert.ToSingle(rand.Next(0, damageBoss)) / 100 * armorWizard;
+                        Console.WriteLine("У тебя осталось:\n Количество жизней " + healthWizard);
+                        Console.WriteLine("У Босса осталось:\n Количество жизней " + healthBoss);
+                        Console.WriteLine();
+                        break;
+
+                    default:
+                        Console.WriteLine("Читай заклинание правильно, иначе оно не сработает!");
+                        break;
+                }
+            }
+
+            if (healthBoss <= 0 && healthWizard <= 0)
+            {
+                Console.WriteLine("Ваша ненависть уничтожила вас обоих!");
+            }
+
+            else if (healthBoss <= 0)
+            {
+                Console.WriteLine("Великий Маг! Ты победил! Мир освобожден!");
+            }
+
+            else if (healthWizard <= 0)
+            {
+                Console.WriteLine("Увы! Ты погибаешь! Прощай! Мир погружается в тьму!");
+            }
+        }
+    }
+}
