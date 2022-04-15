@@ -10,28 +10,29 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            Random rand = new Random();
-            float healthBoss = rand.Next(500, 1000);
-            float healthWizard = rand.Next(500, 1000);
-            int damageBoss = rand.Next(50, 200);
-            int damageWizard = rand.Next(50, 200);
-            float armorBoss = rand.Next(25, 100);
-            float armorWizard = rand.Next(25, 100);
+            Random random = new Random();
+            float healthBoss = random.Next(500, 1000);
+            float healthWizard = random.Next(500, 1000);
+            int damageBoss = random.Next(50, 200);
+            int damageWizard = random.Next(50, 200);
+            float armorBoss = random.Next(25, 100);
+            float armorWizard = random.Next(25, 100);
             int blackWitch = 100;
             int shootingStaff = 100;
             float minimumHealth = 200;
             string spell;
             int tryCountForShootingStaff = 0;
             int tryBlackWitch = 3;
-            int spiritLightningDamageBoss = rand.Next(10, 100);
-            int spiritLightningDamageWizard = rand.Next(50, 150);
-            int wellOfLife = rand.Next(50, 150);
+            int spiritLightningDamageBoss = random.Next(10, 100);
+            int spiritLightningDamageWizard = random.Next(50, 150);
+            int wellOfLife = random.Next(50, 150);
             int death = 0;
             int tryMinimum = 0;
             int tryMinimumForShootingStaff = 1;
-            int minimumRandom = 0;
-            int forPercent = 100;
-            
+            int minimumDamageBoss = 0;
+            int minimumDamageWizard = 0;
+            int attackPercent = 100;
+
             Console.WriteLine("Привестсвую! О, Великий Маг!!!\n Твои возможности:\n Количество жизней " + healthWizard + "; \n" +
                  " Броня " + armorWizard + ";\n Ты способен нанести урон: " + damageWizard);
             Console.WriteLine();
@@ -63,7 +64,7 @@ namespace ConsoleApp2
                             tryBlackWitch--;
                             tryCountForShootingStaff++;
                             healthBoss = healthBoss - blackWitch;
-                            healthWizard -= Convert.ToSingle(rand.Next(minimumRandom, damageBoss)) / forPercent * armorWizard;
+                            healthWizard -= Convert.ToSingle(random.Next(minimumDamageBoss, damageBoss)) / attackPercent * armorWizard;
                             Console.WriteLine("У тебя осталось " + (tryBlackWitch) + " заклинаний Блэквитч");
                         }
                         else if (tryBlackWitch <= tryMinimum)
@@ -80,8 +81,8 @@ namespace ConsoleApp2
                         if (tryCountForShootingStaff >= tryMinimumForShootingStaff)
                         {
                             Console.WriteLine("ШутингСтаф - увеличивает урон на 100!\n Но следующим стреляет Босс!!");
-                            healthBoss -= Convert.ToSingle(rand.Next(minimumRandom, damageWizard + shootingStaff)) / forPercent * armorBoss;
-                            healthWizard -= Convert.ToSingle(rand.Next(minimumRandom, damageBoss)) / forPercent * armorWizard;
+                            healthBoss -= Convert.ToSingle(random.Next(minimumDamageBoss, damageWizard + shootingStaff)) / attackPercent * armorBoss;
+                            healthWizard -= Convert.ToSingle(random.Next(minimumDamageWizard, damageBoss)) / attackPercent * armorWizard;
                             Console.WriteLine("У тебя осталось:\n Количество жизней " + healthWizard);
                             Console.WriteLine("У Босса осталось:\n Количество жизней " + healthBoss);
                             Console.WriteLine();
@@ -95,8 +96,8 @@ namespace ConsoleApp2
                     case "Спиритлайтнин":
                         Console.WriteLine("СпиритЛайтнин - урон, которые нанесут духи своими молниями!\n К сожалению тебе также от них не скрыться!\n" +
                             "Но молнии будут более благосклонны к тебе! Надеемся, что ты выживешь! ");
-                        healthBoss -= Convert.ToSingle(rand.Next(minimumRandom, spiritLightningDamageWizard)) / forPercent * armorBoss;
-                        healthWizard -= Convert.ToSingle(rand.Next(minimumRandom, spiritLightningDamageBoss)) / forPercent * armorWizard;
+                        healthBoss -= Convert.ToSingle(random.Next(minimumDamageBoss, spiritLightningDamageWizard)) / attackPercent * armorBoss;
+                        healthWizard -= Convert.ToSingle(random.Next(minimumDamageWizard, spiritLightningDamageBoss)) / attackPercent * armorWizard;
                         Console.WriteLine("У тебя осталось:\n Количество жизней " + healthWizard);
                         Console.WriteLine("У Босса осталось:\n Количество жизней " + healthBoss);
                         Console.WriteLine();
@@ -107,14 +108,14 @@ namespace ConsoleApp2
                         if (healthWizard <= minimumHealth)
                         {
                             healthWizard = healthWizard + wellOfLife;
-                            healthWizard -= Convert.ToSingle(rand.Next(minimumRandom, damageBoss)) / forPercent * armorWizard;
+                            healthWizard -= Convert.ToSingle(random.Next(minimumDamageWizard, damageBoss)) / attackPercent * armorWizard;
                             Console.WriteLine("Используй правильно свои жизни, Друг наш!");
                         }
 
                         else
                         {
                             Console.WriteLine("Еще не время наполнять тебя жизнью! Остерегайся Босса!!");
-                            healthWizard -= Convert.ToSingle(rand.Next(minimumRandom, damageBoss)) / forPercent * armorWizard;
+                            healthWizard -= Convert.ToSingle(random.Next(minimumDamageWizard, damageBoss)) / attackPercent * armorWizard;
                         }
                         Console.WriteLine("У тебя осталось:\n Количество жизней " + healthWizard);
                         Console.WriteLine("У Босса осталось:\n Количество жизней " + healthBoss);
@@ -123,8 +124,8 @@ namespace ConsoleApp2
 
                     case "Майселф":
                         Console.WriteLine("О! великий Маг! Мы верим в твою победу!");
-                        healthBoss -= Convert.ToSingle(rand.Next(minimumRandom, damageWizard)) / forPercent * armorBoss;
-                        healthWizard -= Convert.ToSingle(rand.Next(minimumRandom, damageBoss)) / forPercent * armorWizard;
+                        healthBoss -= Convert.ToSingle(random.Next(minimumDamageBoss, damageWizard)) / attackPercent * armorBoss;
+                        healthWizard -= Convert.ToSingle(random.Next(minimumDamageWizard, damageBoss)) / attackPercent * armorWizard;
                         Console.WriteLine("У тебя осталось:\n Количество жизней " + healthWizard);
                         Console.WriteLine("У Босса осталось:\n Количество жизней " + healthBoss);
                         Console.WriteLine();
