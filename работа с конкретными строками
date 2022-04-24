@@ -9,13 +9,14 @@ namespace ConsoleApp3
     internal class Program
     {
         static void Main(string[] args)
-        {
-            int sum;
-            int multiplication;
+        {   int summ=0;
+            int multiplication=1;
             int line = 3;
             int column = 5;
             int minimumNumber = 0;
             int maximumNumber = 9;
+            int lineToCount = 1;
+            int columnToCount = 0;
 
             int[,] array = new int[line, column];
             Random rand = new Random();
@@ -26,15 +27,19 @@ namespace ConsoleApp3
                 {
                     array[numberForLine, numberForColumn] = rand.Next(minimumNumber, maximumNumber);
                     Console.Write(array[numberForLine, numberForColumn] + " ");
+                    
+                    if (numberForLine == lineToCount)
+                    {
+                        summ += array[numberForLine, numberForColumn];                        
+                    }
+
+                    if (numberForColumn == columnToCount) 
+                    { multiplication *= array[numberForLine, numberForColumn]; }
                 }
                 Console.WriteLine();
             }
-           
-            sum = array[line=1, 0] + array[line = 1, 1] + array[line = 1, 2] + array[line = 1, 3] + array[line = 1, 4];
-            Console.WriteLine("\nСумма второй строки: "+sum );
-
-            multiplication = array[0, 0] * array[1, 0] * array[2, 0];
-            Console.WriteLine("\nПроизведение первого столбца: " + multiplication+"\n");
+            Console.WriteLine("\nСумма: " + summ);
+            Console.WriteLine("\nПроизведение: " + multiplication);
         }
     }
 }
