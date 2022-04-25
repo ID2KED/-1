@@ -9,8 +9,9 @@ namespace ConsoleApp3
     internal class Program
     {
         static void Main(string[] args)
-        {   int summ=0;
-            int multiplication=1;
+        {
+            int summ = 0;
+            int multiplication = 1;
             int line = 3;
             int column = 5;
             int minimumNumber = 0;
@@ -19,27 +20,42 @@ namespace ConsoleApp3
             int columnToCount = 0;
 
             int[,] array = new int[line, column];
-            Random rand = new Random();
+            Random random = new Random();
 
-            for (int numberForLine = 0; numberForLine < array.GetLength(0); numberForLine++)
+
+            for (int numberForLine = 0; numberForLine < line; numberForLine++)
             {
-                for (int numberForColumn = 0; numberForColumn < array.GetLength(1); numberForColumn++)
+                for (int numberForColumn = 0; numberForColumn < column; numberForColumn++)
                 {
-                    array[numberForLine, numberForColumn] = rand.Next(minimumNumber, maximumNumber);
+                    array[numberForLine, numberForColumn] = random.Next(minimumNumber, maximumNumber);
                     Console.Write(array[numberForLine, numberForColumn] + " ");
-                    
-                    if (numberForLine == lineToCount)
-                    {
-                        summ += array[numberForLine, numberForColumn];                        
-                    }
-
-                    if (numberForColumn == columnToCount) 
-                    { multiplication *= array[numberForLine, numberForColumn]; }
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("\nСумма: " + summ);
-            Console.WriteLine("\nПроизведение: " + multiplication);
-        }
+
+            for (int numberForLine = 0; numberForLine < line; numberForLine++)
+            {
+                for (int numberForColumn = 0; numberForColumn < column; numberForColumn++)
+                {
+                    if (numberForLine == lineToCount)
+                    {
+                        summ += array[numberForLine, numberForColumn];
+                    }
+                }
+            }
+            Console.WriteLine("\nСумма второй строки равна: "+ summ);
+
+            for (int numberForLine = 0; numberForLine < line; numberForLine++)
+            {
+                for (int numberForColumn = 0; numberForColumn < column; numberForColumn++)
+                {               
+                    if (numberForColumn == columnToCount)
+                    { 
+                        multiplication *= array[numberForLine, numberForColumn]; 
+                    }
+                }
+            }      
+            Console.WriteLine("\nПроизведение первого столбца равно: " +multiplication +"\n");
+        }       
     }
 }
