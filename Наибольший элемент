@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] array = new int[10, 10];
+            int maxElement = int.MinValue;
+            int changElement = 0;
+            Random random = new Random();
+
+            for (int line = 0; line < array.GetLength(0); line++)
+            {
+                for (int column = 0; column < array.GetLength(1); column++)
+                {
+                    array[line, column] = random.Next(0, 10);
+                    Console.Write(array[line, column] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            for (int line = 0; line < array.GetLength(0); line++)
+            {
+                for (int column = 0; column < array.GetLength(1); column++)
+                {
+                    if (maxElement < array[line, column])
+                    {
+                        maxElement = array[line, column];
+                    }
+                }    
+            }
+
+            Console.WriteLine("\nмаксимальный элемент: " + maxElement);
+            Console.WriteLine("\nОбновленная матрица: ");
+            for (int line = 0; line < array.GetLength(0); line++)
+            {
+                for (int column = 0; column < array.GetLength(1); column++)
+                {
+                    if (array[line, column] == maxElement)
+                    {
+                        array[line, column] = changElement;
+                    }
+                    Console.Write(array[line, column] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
