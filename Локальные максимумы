@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = new int[30];
+            Random random = new Random();
+            int beginArray = int.MinValue;
+            int endArray = int.MinValue;
+
+            for (int number = 0; number < array.Length; number++)
+            {
+                array[number] = random.Next(0, 10);
+                Console.Write(array[number] + " ");
+            }
+
+            beginArray = array[0];
+            endArray = array[array.Length - 1];
+
+            Console.WriteLine("\n\n" + array.Length + " длина массива\n" + "\nПервое число массива: " + beginArray + "\nПоследнее число массива: " + endArray);
+
+            if (beginArray > array[1])
+            {
+                Console.WriteLine("\nпервый локальный максимум: " + beginArray);
+            }
+
+            for (int number = 1; number < (array.Length - 1); number++)
+            {
+                if (array[number] > array[number + 1] && array[number] > array[number - 1])
+                {
+                    Console.WriteLine("локальный максимум: " + array[number]);
+                }
+            }
+
+            if (endArray > array[array.Length-2])
+            {
+                Console.WriteLine("последний локальный максимум: " + endArray);
+            }
+        }
+    }
+}
