@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = new int[0];
+            int[] tempArray = new int[array.Length + 1];
+            int number;
+            bool exit = true;
+            int sum = 0;
+            int invalidInput = 5;
+            string userChoice;
+
+            while (exit)
+            {
+                Console.WriteLine("\nВыберите команду:\nnumber - ввести число;\nsum - просуммировать введенные числа;\nexit - выход");
+                Console.Write("Введите команду: ");
+
+                userChoice = Console.ReadLine();
+                switch (userChoice)
+                {
+                    case "number":
+                        Console.Write("\nВведите число: ");
+                        number = Convert.ToInt32(Console.ReadLine());
+                        for (int i = 0; i < array.Length; i++)
+                        {
+                            tempArray[i] = array[i];
+                        }
+                        tempArray[tempArray.Length - 1] = number;
+                        array = tempArray;
+                        for (int i = 0; i < array.Length; i++)
+                        {
+                            sum += array[i];
+                        }
+                        break;
+
+                    case "sum":
+                        Console.WriteLine("Cумма введенных Вами чисел равна: " + sum);
+                        break;
+
+                    case "exit":
+                        exit = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("\nВы ввели неправильную команду!\nК сумме будет добавлено чило: " + invalidInput);
+                        number = invalidInput;
+                        for (int i = 0; i < array.Length; i++)
+                        {
+                            tempArray[i] = array[i];
+                        }
+                        tempArray[tempArray.Length - 1] = number;
+                        array = tempArray;
+                        for (int i = 0; i < array.Length; i++)
+                        {
+                            sum += array[i];
+                        }
+                        break;
+                }
+            }
+        }
+    }
+}
