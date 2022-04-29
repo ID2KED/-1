@@ -18,10 +18,12 @@ namespace ConsoleApp3
             {
                 Console.SetCursorPosition(0, 0);
                 Console.Write("Числа: ");
+
                 for (int i = 0; i < array.Length; i++)
                 {
                     Console.Write(array[i] + " ");
                 }
+
                 Console.SetCursorPosition(0, 1);
                 Console.Write("\n\nВведите число: ");
                 number = Convert.ToInt32(Console.ReadLine());
@@ -29,62 +31,67 @@ namespace ConsoleApp3
                 if (number >= 0)
                 {
                     int[] tempArray = new int[array.Length + 1];
+
                     for (int i = 0; i < array.Length; i++)
                     {
                         tempArray[i] = array[i];
                     }
+
                     tempArray[tempArray.Length - 1] = number;
                     array = tempArray;
-                }
-                Console.WriteLine("\nНажмите enter, если хотите выйти в меню;\nНажмите esc, если хотите вводить числа дальше.");
-                ConsoleKeyInfo charKey = Console.ReadKey();
-                switch (charKey.Key)
-                {
-                    case ConsoleKey.Enter:
-                        string userInPut;
-                        Console.WriteLine("\nВведите sum, чтобы посчитать сумму введенных чисел;\nВведите exit, чтобы выйти из программы");
-                        Console.Write("Сделайте свой выбор: ");
-                        userInPut = Console.ReadLine();
-                        switch (userInPut)
-                        {
-                            case "sum":
-                                int sum = 0;
-                                for (int i = 0; i < array.Length; i++)
-                                {
-                                    sum += array[i];
-                                }
-                                Console.WriteLine("Сумма введенных чисел: "+ sum);
-                                break;
 
-                            case "exit":
-                                isItProgram = false;
-                                break;
+                    Console.WriteLine("\nНажмите enter, если хотите выйти в меню;\nНажмите esc, если хотите вводить числа дальше.");
+                    ConsoleKeyInfo charKey = Console.ReadKey();
 
-                            default:
-                             
-                                int invalidInput = 5;
-                                number = invalidInput;
-                                Console.WriteLine("Неправильная команда, к массиву будет прибавлено число " + invalidInput);
-                                if (number >= 0)
-                                {
-                                    int[] tempArray = new int[array.Length + 1];
+                    switch (charKey.Key)
+                    {
+                        case ConsoleKey.Enter:
+                            string userInPut;
+                            Console.WriteLine("\nВведите sum, чтобы посчитать сумму введенных чисел;\nВведите exit, чтобы выйти из программы");
+                            Console.Write("Сделайте свой выбор: ");
+                            userInPut = Console.ReadLine();
+
+                            switch (userInPut)
+                            {
+                                case "sum":
+                                    int sum = 0;
+                                   
+                                    for (int i = 0; i < array.Length; i++)
+                                    {
+                                        sum += array[i];
+                                    }
+                                   
+                                    Console.WriteLine("Сумма введенных чисел: " + sum);
+                                    break;
+
+                                case "exit":
+                                    isItProgram = false;
+                                    break;
+
+                                default:
+
+                                    int invalidInput = 5;
+                                    Console.WriteLine("Неправильная команда, к массиву будет прибавлено число " + invalidInput);
+
                                     for (int i = 0; i < array.Length; i++)
                                     {
                                         tempArray[i] = array[i];
                                     }
-                                    tempArray[tempArray.Length - 1] = number;
+                                    
+                                    tempArray[tempArray.Length - 1] = invalidInput;
                                     array = tempArray;
-                                }
-                                break;
-                        }
-                        break;
 
-                    case ConsoleKey.Escape:
-                        break;
+                                    break;
+                            }
+                            break;
+
+                        case ConsoleKey.Escape:
+                            break;
+                    }
+                    Console.Write("\nКонсоль будет очищена.Для продолжения нажмите любую клавишу");
+                    Console.ReadKey();
+                    Console.Clear();
                 }
-                Console.Write("\nКонсоль будет очищена.Для продолжения нажмите любую клавишу");
-                Console.ReadKey();
-                Console.Clear();
             }
         }
     }
