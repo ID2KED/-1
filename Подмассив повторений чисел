@@ -11,27 +11,34 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             int[] array = new int[30];
-            Random rand = new Random();
+            Random random = new Random();
             int maxNumber = int.MinValue;
             int number = 0;
+            int firstNumber = 0;
+            int lastNumber = 10;
+
 
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = rand.Next(0, 10);
+                array[i] = random.Next(firstNumber, lastNumber);
                 Console.Write(array[i] + " ");
             }
 
             Console.WriteLine("\n");
-
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < (array.Length-1); i++)
             {
-                int repeatTimes = 0;
+                int repeatTimes = 1;
 
-                for (int j = 0; j < array.Length; j++)
+                for (int j = (i+1); j < array.Length; j++)
                 {
                     if (array[i] == array[j])
                     {
-                        repeatTimes++;
+                        repeatTimes++;                                               
+                    }
+
+                    else
+                    {
+                        repeatTimes = 0;
                     }
 
                     if (maxNumber < repeatTimes)
@@ -43,6 +50,7 @@ namespace ConsoleApp1
             }
 
             Console.WriteLine("Число " + number + " повторяется " + maxNumber + " раз.");
+
         }
     }
 }
