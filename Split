@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = "Привет! Как ваши дела?";
+            string[] wordText = text.Split(' ');
+
+            for (int i = 0; i < wordText.Length; i++)
+            {
+                Console.Write(wordText[i] + " ");
+            }
+
+            Console.WriteLine("\n");
+
+            for (int i = 0; i < wordText.Length; i++)
+            {
+                Console.WriteLine(wordText[i] + " ");
+            }
+
+            Console.WriteLine("\n");
+        }
+    }
+}
+
