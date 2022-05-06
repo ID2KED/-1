@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = new int[5];
+            Random random = new Random();
+            int minNumber = 0;
+            int maxNumber = 10;
+            int range = 1;
+            int tempNumber;
+            int shift;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(minNumber, maxNumber);
+                Console.Write(array[i] + " ");
+            }
+
+            Console.WriteLine();
+
+            Console.Write("\nВведите количество сдвигов влево: ");
+            shift = Convert.ToInt32(Console.ReadLine());
+
+            while (shift > 0)
+            {
+                tempNumber = array[0];
+
+                for (int i = 1; i < array.Length; i++)
+                {
+                    array[i - 1] = array[i];
+                }
+
+                array[array.Length - 1] = tempNumber;
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    Console.Write(array[i] + " ");
+                }
+                
+                Console.WriteLine();
+
+                shift = shift - range;
+            }
+        }
+    }
+}
+
+
