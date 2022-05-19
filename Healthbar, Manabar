@@ -15,18 +15,26 @@ namespace ConsoleApp5
             float mana = 0;
             float maxMana = 10;
             float maxPercent = 100;
+            bool isNeedFull = true;
            
-            while (true) 
+            while (isNeedFull) 
             {
                 DrawBar(health, maxHealth, ConsoleColor.Red, 0);
                 DrawBar(mana, maxMana, ConsoleColor.Yellow, 1);
 
                 Console.SetCursorPosition(0, 5);
                 Console.Write("Введите процент жизни: ");
-                health += maxHealth / maxPercent * (Convert.ToSingle(Console.ReadLine()));
+                health += Convert.ToSingle(Console.ReadLine())*maxHealth /maxPercent;
 
                 Console.Write("Введите процент маны: ");
-                mana += maxMana / maxPercent * (Convert.ToSingle(Console.ReadLine()));
+                mana += Convert.ToSingle(Console.ReadLine()) * maxMana / maxPercent;
+
+                if (mana>maxMana || health > maxHealth) 
+                {
+                    Console.SetCursorPosition(0, 10);
+                    Console.WriteLine("Вы превысили максимальный процент наполнения! До свидания!");
+                    isNeedFull = false;
+                }
 
                 Console.ReadKey();
                 Console.Clear();
