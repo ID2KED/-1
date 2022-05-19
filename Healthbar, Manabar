@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            float health = 0;
+            float maxHealth = 10;
+            float mana = 0;
+            float maxMana = 10;
+            float maxPercent = 100;
+           
+            while (true) 
+            {
+                DrawBar(health, maxHealth, ConsoleColor.Red, 0);
+                DrawBar(mana, maxMana, ConsoleColor.Yellow, 1);
+
+                Console.SetCursorPosition(0, 5);
+                Console.Write("Введите процент жизни: ");
+                health += maxHealth / maxPercent * (Convert.ToSingle(Console.ReadLine()));
+
+                Console.Write("Введите процент маны: ");
+                mana += maxMana / maxPercent * (Convert.ToSingle(Console.ReadLine()));
+
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+
+        static void DrawBar (float value, float maxValue, ConsoleColor color, int position, char symbol='#', char symbolEmpty='_') 
+        {
+            ConsoleColor defaultColor = Console.BackgroundColor;
+
+            string bar = "";
+
+            for (float i = 0; i < value; i++)
+            {
+                bar += symbol;
+            }
+
+            Console.SetCursorPosition(0, position);
+            Console.Write('[');
+            Console.BackgroundColor = color;
+            Console.Write(bar);
+            Console.BackgroundColor = defaultColor;
+
+            bar = "";
+
+            for (float i = value; i <maxValue; i++)
+            {
+                bar += symbolEmpty;
+            }
+
+            Console.Write(bar+']');
+        }
+    }
+}
