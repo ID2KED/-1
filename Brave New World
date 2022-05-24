@@ -10,17 +10,17 @@ namespace BraveNewWorld
     {
         static void Main(string[] args)
         {
-            int dogX;
-            int dogY;
-            int dogDX = 0;
-            int dogDY = 1;
+            int dogPositionX;
+            int dogPositionY;
+            int dogDirectionX = 0;
+            int dogDirectionY = 1;
             int collectMoney = 0;
             int allMoney = 0;
             bool isHungry = true;
 
             Console.CursorVisible = false;
 
-            char[,] map = ReadMap(out map, out dogX, out dogY, ref allMoney);
+            char[,] map = ReadMap(out map, out dogPositionX, out dogPositionY, ref allMoney);
 
             DrawMap(map);
 
@@ -29,13 +29,13 @@ namespace BraveNewWorld
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey(true);
-                    ChangeDirection(key, ref dogDX, ref dogDY);
+                    ChangeDirection(key, ref dogDirectionX, ref dogDirectionY);
                 }
 
-                if (map[dogX + dogDX, dogY + dogDY] != '#')
+                if (map[dogPositionX + dogDirectionX, dogPositionY + dogDirectionY] != '#')
                 {
-                    CollectMoney(map, dogX, dogY, ref collectMoney);
-                    Move(map, '@', ref dogX, ref dogY, dogDX, dogDY);
+                    CollectMoney(map, dogPositionX, dogPositionY, ref collectMoney);
+                    Move(map, '@', ref dogPositionX, ref dogPositionY, dogDirectionX, dogDirectionY);
                 }
 
                 Console.SetCursorPosition(0, 21);
@@ -50,50 +50,50 @@ namespace BraveNewWorld
             }
         }
 
-        static void ChangeDirection(ConsoleKeyInfo key, ref int dogDX, ref int dogDY)
+        static void ChangeDirection(ConsoleKeyInfo key, ref int dogDirectionX, ref int dogDirectionY)
         {
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    dogDX = -1;
-                    dogDY = 0;
+                    dogDirectionX = -1;
+                    dogDirectionY = 0;
                     break;
 
                 case ConsoleKey.DownArrow:
-                    dogDX = 1;
-                    dogDY = 0;
+                    dogDirectionX = 1;
+                    dogDirectionY = 0;
                     break;
 
                 case ConsoleKey.LeftArrow:
-                    dogDX = 0;
-                    dogDY = -1;
+                    dogDirectionX = 0;
+                    dogDirectionY = -1;
                     break;
 
                 case ConsoleKey.RightArrow:
-                    dogDX = 0;
-                    dogDY = 1;
+                    dogDirectionX = 0;
+                    dogDirectionY = 1;
                     break;
             }
         }
 
-        static void CollectMoney(char[,] map, int dogX, int dogY, ref int collectMoney)
+        static void CollectMoney(char[,] map, int dogPositionX, int dogPositionY, ref int collectMoney)
         {
-            if (map[dogX, dogY] == '$')
+            if (map[dogPositionX, dogPositionY] == '$')
             {
                 collectMoney++;
-                map[dogX, dogY] = ' ';
+                map[dogPositionX, dogPositionY] = ' ';
             }
         }
 
-        static void Move(char[,] map, char symbol, ref int dogX, ref int dogY, int dogDX, int dogDY)
+        static void Move(char[,] map, char symbol, ref int dogPositionX, ref int dogPositionY, int dogDirectionX, int dogDirectionY)
         {
-            Console.SetCursorPosition(dogY, dogX);
-            Console.Write(map[dogX, dogY]);
+            Console.SetCursorPosition(dogPositionY, dogPositionX);
+            Console.Write(map[dogPositionX, dogPositionY]);
 
-            dogX += dogDX;
-            dogY += dogDY;
+            dogPositionX += dogDirectionX;
+            dogPositionY += dogDirectionY;
 
-            Console.SetCursorPosition(dogY, dogX);
+            Console.SetCursorPosition(dogPositionY, dogPositionX);
             Console.Write(symbol);
         }
 
@@ -109,7 +109,7 @@ namespace BraveNewWorld
             }
         }
 
-        static char[,] ReadMap(out char[,] mapName, out int dogX, out int dogY, ref int allMoney)
+        static char[,] ReadMap(out char[,] mapName, out int dogPositionX, out int dogPositionY, ref int allMoney)
         {
             char[,] map =
             {
@@ -132,8 +132,8 @@ namespace BraveNewWorld
            {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#'},
             };
 
-            dogX = 0;
-            dogY = 0;
+            dogPositionX = 0;
+            dogPositionY = 0;
             mapName = map;
 
             for (int i = 0; i < map.GetLength(0); i++)
@@ -142,8 +142,8 @@ namespace BraveNewWorld
                 {
                     if (map[i, j] == '@')
                     {
-                        dogX = i;
-                        dogY = j;
+                        dogPositionX = i;
+                        dogPositionY = j;
                         map[i, j] = ' ';
                     }
 
