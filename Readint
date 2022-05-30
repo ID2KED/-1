@@ -10,14 +10,13 @@ namespace ConsoleApp6
     {
         static void Main(string[] args)
         {
-            string inPut;
+            string inPut=" ";
 
-            EnterNumber(out inPut);
+            GetNumber(inPut);
         }
 
-        static void EnterNumber(out string inPut)
+        static void GetNumber(string inPut)
         {
-            inPut=" ";
             bool isWriteResult = false;
 
             while (isWriteResult == false)
