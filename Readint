@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string inPut;
+
+            EnterNumber(out inPut);
+        }
+
+        static void EnterNumber(out string inPut)
+        {
+            inPut=" ";
+            bool isWriteResult = false;
+
+            while (isWriteResult == false)
+            {
+                Console.Write("Введите число: ");
+                inPut = Console.ReadLine();
+
+                bool result = Int32.TryParse(inPut, out var newNumber);
+
+                if (result == true)
+                {
+                    Console.WriteLine($"Конвертация удалась, число: {newNumber}");
+                    isWriteResult = true;
+                }
+
+                else
+                {
+                    Console.WriteLine("Конвертация не удалась, попробуйте еще!");
+                }
+            }
+        }
+    }
+}
